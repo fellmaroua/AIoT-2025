@@ -14,7 +14,7 @@ You'll start with the fundamental **Logistic Regression** model and have the opp
 ## 2. Dataset Overview
 This dataset simulates real-world conditions encountered by an IoT fire detection device.
 
-- **Source**: [Kaggle - Smoke Detection Dataset](https://www.kaggle.com/datasets)  
+- **Source**: [Kaggle - Smoke Detection Dataset](https://www.kaggle.com/datasets/deepcontractor/smoke-detection-dataset)  
 - **Key Features (Input/X):**  
   Time-series readings from sensors like:
   - Temperature  
