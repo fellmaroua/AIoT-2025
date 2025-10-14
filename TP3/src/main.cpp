@@ -4,6 +4,20 @@
 #define DHTTYPE DHT22 // DHT 22  (AM2302), AM2321
 DHT dht(DHTPIN, DHTTYPE);
 
+const int N_FEATURES = 12;
+const float MEAN[N_FEATURES] = {/* μ_Temperature, μ_Humidity */};
+const float STD[N_FEATURES] = {/* σ_Temperature, σ_Humidity */};
+const float WEIGHTS[N_FEATURES] = {/* W_Temperature, W_Humidity */};
+const float BIAS = 0; /* b */
+
+float X[N_FEATURES] = {20.0, 57.36, 0, 400, 12306, 18520, 939.735, 0.0, 0.0, 0.0, 0.0, 0.0}; // Input features
+
+/*
+20.0,57.36,0,400
+,12306,18520,939.735,0.0
+,0.0,0.0,0.0,0.0
+*/
+
 void setup()
 {
   Serial.begin(9600);
@@ -23,12 +37,24 @@ void loop()
   // Read temperature as Fahrenheit (isFahrenheit = true)
   float f = dht.readTemperature(true);
 
+  // add data to input array
+  X[0] = t;
+  X[1] = h;
+
   // Check if any reads failed and exit early (to try again).
   if (isnan(h) || isnan(t) || isnan(f))
   {
     Serial.println(F("Failed to read from DHT sensor!"));
     return;
   }
+
+  // TODO: Add code to standardize the inputs
+
+  // TODO: Add code to compute the output of wx + b
+
+  // TODO: Add code to apply the sigmoid function
+
+  // TODO: Add code to print the result to the serial monitor
 
   // Compute heat index in Fahrenheit (the default)
   // float hif = dht.computeHeatIndex(f, h);
